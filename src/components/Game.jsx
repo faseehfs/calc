@@ -2,7 +2,7 @@ import * as React from "react";
 
 export default function Game({ setScene, gameMode }) {
   function goBack() {
-    setScene(null);
+    setScene("menu");
   }
 
   return (

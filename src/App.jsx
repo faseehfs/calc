@@ -7,18 +7,15 @@ import Menu from "./components/Menu.jsx";
 import Game from "./components/Game.jsx";
 
 function App() {
-  const [scene, setScene] = React.useState(null);
+  const [scene, setScene] = React.useState("menu");
   const [gameMode, setGameMode] = React.useState(null);
 
-  return (
-    <div className="container">
-      {scene === null ? (
-        <Menu setScene={setScene} setGameMode={setGameMode} />
-      ) : (
-        <Game setScene={setScene} gameMode={gameMode} />
-      )}
-    </div>
-  );
+  const scenes = {
+    menu: <Menu setScene={setScene} setGameMode={setGameMode} />,
+    game: <Game setScene={setScene} gameMode={gameMode} />,
+  };
+
+  return <div className="container">{scenes[scene]}</div>;
 }
 
 const rootElement = document.getElementById("root");
