@@ -8,7 +8,6 @@ import Menu from "./components/Menu.jsx";
 function App() {
   return (
     <div className="container">
-      <h1 style={{ margin: "0 0 2rem 0" }}>Let's Start Training!</h1>
       <Menu />
     </div>
   );

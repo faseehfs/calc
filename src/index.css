@@ -60,4 +60,15 @@ button:hover {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.vbox button {
+  width: 100%;
+}
+
+.display-none {
+  display: none;
 }
