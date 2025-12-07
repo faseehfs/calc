@@ -8,13 +8,14 @@ import Game from "./components/Game.jsx";
 
 function App() {
   const [scene, setScene] = React.useState(null);
+  const [gameMode, setGameMode] = React.useState(null);
 
   return (
     <div className="container">
       {scene === null ? (
-        <Menu setScene={setScene} />
+        <Menu setScene={setScene} setGameMode={setGameMode} />
       ) : (
-        <Game setScene={setScene} />
+        <Game setScene={setScene} gameMode={gameMode} />
       )}
     </div>
   );

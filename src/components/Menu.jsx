@@ -1,7 +1,18 @@
 import * as React from "react";
 
-export default function Menu({ setScene }) {
+export default function Menu({ setScene, setGameMode }) {
   function timesTable() {
+    setGameMode("times-table");
+    setScene("game");
+  }
+
+  function addition() {
+    setGameMode("addition");
+    setScene("game");
+  }
+
+  function both() {
+    setGameMode("both");
     setScene("game");
   }
 
@@ -10,8 +21,8 @@ export default function Menu({ setScene }) {
       <h1 style={{ margin: "0 0 2rem 0" }}>Let's Start Training!</h1>
       <div className={`vbox`} style={{ maxWidth: "16rem" }}>
         <button onClick={timesTable}>Times Table</button>
-        <button>Addition</button>
-        <button>Both</button>
+        <button onClick={addition}>Addition</button>
+        <button onClick={both}>Both</button>
       </div>
     </div>
   );
