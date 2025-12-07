@@ -5,8 +5,8 @@ export default function Game({ setScene, gameMode }) {
 
   if (gameMode === "times-table") {
     generateQAndA = () => {
-      const num1 = Math.floor(Math.random() * 10);
-      const num2 = Math.floor(Math.random() * 10);
+      const num1 = Math.floor(Math.random() * 9 + 1);
+      const num2 = Math.floor(Math.random() * 9 + 1);
       const question = `${num1} × ${num2}`;
       const answer = num1 * num2;
       return [question, answer];
@@ -23,6 +23,7 @@ export default function Game({ setScene, gameMode }) {
 
   const [currentQa, setCurrentQa] = React.useState(generateQAndA());
   const [typedAnswer, setTypedAnswer] = React.useState("");
+  const [prevAnswer, setPrevAnswer] = React.useState("");
 
   function updateQa() {
     setCurrentQa(generateQAndA());
@@ -49,6 +50,7 @@ export default function Game({ setScene, gameMode }) {
           if (!validateAns(newValue)) {
             alert("Wrong!");
           }
+          setPrevAnswer(newValue);
           return "";
         } else {
           return newValue;
@@ -69,7 +71,8 @@ export default function Game({ setScene, gameMode }) {
   return (
     <div>
       <h1>{currentQa[0]}</h1>
-      <p>{typedAnswer}</p>
+      <h3>{typedAnswer ? typedAnswer : "-"}</h3>
+      <p>{prevAnswer}</p>
       <button onClick={updateQa}>New</button>
       <button onClick={goBack}>Go Back</button>
     </div>
