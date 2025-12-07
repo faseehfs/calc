@@ -11,18 +11,12 @@ export default function Menu({ setScene, setGameMode }) {
     setScene("game");
   }
 
-  function both() {
-    setGameMode("both");
-    setScene("game");
-  }
-
   return (
     <div className="vbox" style={{ maxWidth: "28rem" }}>
       <h1 style={{ margin: "0 0 2rem 0" }}>Let's Start Training!</h1>
       <div className={`vbox`} style={{ maxWidth: "16rem" }}>
         <button onClick={timesTable}>Times Table</button>
         <button onClick={addition}>Addition</button>
-        <button onClick={both}>Both</button>
       </div>
     </div>
   );

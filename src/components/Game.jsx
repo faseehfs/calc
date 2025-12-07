@@ -73,7 +73,6 @@ export default function Game({ setScene, gameMode }) {
       <h1>{currentQa[0]}</h1>
       <h3>{typedAnswer ? typedAnswer : "-"}</h3>
       <p>{prevAnswer}</p>
-      <button onClick={updateQa}>New</button>
       <button onClick={goBack}>Go Back</button>
     </div>
   );
