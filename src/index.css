@@ -4,9 +4,22 @@
   box-sizing: border-box;
 }
 
+:root {
+  --light: #f2e8cf;
+  --dark: #1c1c1c;
+
+  --primary: #6a994e;
+  --primary-dark: #386641;
+  --primary-light: #a7c957;
+
+  --secondary: #bc4749;
+}
+
 html,
 body {
+  width: 100%;
   height: 100%;
+  text-align: center;
 }
 
 body {
@@ -22,4 +35,26 @@ body {
     sans-serif;
   width: 100%;
   max-width: 38rem;
+  color: var(--dark);
+  background-color: var(--light);
+}
+
+button {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--light);
+  background-color: var(--primary);
+  border: none;
+  border-radius: 0.5rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: var(--primary-dark);
+}
+
+.vbox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
