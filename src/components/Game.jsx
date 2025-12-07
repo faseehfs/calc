@@ -21,7 +21,8 @@ export default function Game({ setScene, gameMode }) {
     };
   }
 
-  var [currentQa, setCurrentQa] = React.useState(generateQAndA());
+  const [currentQa, setCurrentQa] = React.useState(generateQAndA());
+  const [typedAnswer, setTypedAnswer] = React.useState("");
 
   function updateQa() {
     setCurrentQa(generateQAndA());
@@ -31,9 +32,44 @@ export default function Game({ setScene, gameMode }) {
     setScene("menu");
   }
 
+  function validateAns(answer) {
+    if (Number(answer) === currentQa[1]) {
+      updateQa();
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function handleKeyDown(e) {
+    if (e.key >= "0" && e.key <= "9") {
+      setTypedAnswer((prev) => {
+        const newValue = prev + e.key;
+        if (newValue.length === currentQa[1].toString().length) {
+          if (!validateAns(newValue)) {
+            alert("Wrong!");
+          }
+          return "";
+        } else {
+          return newValue;
+        }
+      });
+    } else if (e.key === "Backspace") {
+      setTypedAnswer((prev) => prev.slice(0, -1));
+    } else if (e.key === "Enter") {
+      validateAns(typedAnswer);
+    }
+  }
+
+  React.useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [currentQa, typedAnswer]);
+
   return (
     <div>
       <h1>{currentQa[0]}</h1>
+      <p>{typedAnswer}</p>
       <button onClick={updateQa}>New</button>
       <button onClick={goBack}>Go Back</button>
     </div>
