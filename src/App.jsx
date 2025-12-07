@@ -15,7 +15,11 @@ function App() {
     game: <Game setScene={setScene} gameMode={gameMode} />,
   };
 
-  return <div className="container">{scenes[scene]}</div>;
+  return (
+    <div className="container fade-wrapper" key={scene}>
+      {scenes[scene]}
+    </div>
+  );
 }
 
 const rootElement = document.getElementById("root");

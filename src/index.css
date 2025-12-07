@@ -22,6 +22,7 @@ body,
   height: 100%;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 .container {
@@ -71,4 +72,17 @@ button:hover {
 
 .display-none {
   display: none;
+}
+
+.fade-wrapper {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 250ms ease forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
