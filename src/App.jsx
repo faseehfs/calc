@@ -4,11 +4,18 @@ import * as React from "react";
 import { createRoot } from "react-dom/client";
 
 import Menu from "./components/Menu.jsx";
+import Game from "./components/Game.jsx";
 
 function App() {
+  const [scene, setScene] = React.useState(null);
+
   return (
     <div className="container">
-      <Menu />
+      {scene === null ? (
+        <Menu setScene={setScene} />
+      ) : (
+        <Game setScene={setScene} />
+      )}
     </div>
   );
 }
