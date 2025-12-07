@@ -12,6 +12,9 @@
   --primary-dark: #386641;
   --primary-light: #a7c957;
 
+  --success: #6a994e;
+  --danger: #bc4749;
+
   --secondary: #bc4749;
 }
 
@@ -88,4 +91,11 @@ button:hover {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.success-color {
+  color: var(--success);
+}
+.danger-color {
+  color: var(--danger);
 }

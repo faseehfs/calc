@@ -24,6 +24,7 @@ export default function Game({ setScene, gameMode }) {
   const [currentQa, setCurrentQa] = React.useState(generateQAndA());
   const [typedAnswer, setTypedAnswer] = React.useState("");
   const [prevAnswer, setPrevAnswer] = React.useState("");
+  const [correct, setCorrect] = React.useState(null);
 
   function updateQa() {
     setCurrentQa(generateQAndA());
@@ -47,8 +48,10 @@ export default function Game({ setScene, gameMode }) {
       setTypedAnswer((prev) => {
         const newValue = prev + e.key;
         if (newValue.length === currentQa[1].toString().length) {
-          if (!validateAns(newValue)) {
-            alert("Wrong!");
+          if (validateAns(newValue)) {
+            setCorrect(true);
+          } else {
+            setCorrect(false);
           }
           setPrevAnswer(newValue);
           return "";
@@ -70,6 +73,11 @@ export default function Game({ setScene, gameMode }) {
 
   return (
     <div>
+      {correct === true ? (
+        <p className="success-color">Correct!</p>
+      ) : correct === false ? (
+        <p className="danger-color">Wrong!</p>
+      ) : null}
       <h1>{currentQa[0]}</h1>
       <h3>{typedAnswer ? typedAnswer : "-"}</h3>
       <p>{prevAnswer}</p>
