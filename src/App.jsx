@@ -1,24 +1,20 @@
 import * as React from "react";
+// In some editors, the above line might be greyed out, but it is essential.
+
 import { createRoot } from "react-dom/client";
 
-function Menu() {
+import Menu from "./components/Menu.jsx";
+
+function App() {
   return (
-    <div className="vbox" style={{ width: "16rem" }}>
-      <button>Times Table</button>
-      <button>Addition</button>
-      <button>Both</button>
+    <div className="container">
+      <h1 style={{ margin: "0 0 2rem 0" }}>Let's Start Training!</h1>
+      <Menu />
     </div>
   );
 }
 
-function App() {
-  return (
-    <>
-      <h1 style={{ margin: "0 0 2rem 0" }}>Let's Start Training!</h1>
-      <Menu></Menu>
-    </>
-  );
-}
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
 
-const root = createRoot(document.body);
 root.render(<App />);
