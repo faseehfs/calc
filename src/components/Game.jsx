@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./Game.css";
 
 export default function Game({ setScene, gameMode }) {
   var generateQAndA;
@@ -25,6 +26,8 @@ export default function Game({ setScene, gameMode }) {
   const [typedAnswer, setTypedAnswer] = React.useState("");
   const [prevAnswer, setPrevAnswer] = React.useState("...");
   const [correct, setCorrect] = React.useState(null);
+  const [noOfCorrect, setNoOfCorrect] = React.useState(0);
+  const [noOfWrong, setNoOfWrong] = React.useState(0);
 
   function updateQa() {
     setCurrentQa(generateQAndA());
@@ -50,8 +53,10 @@ export default function Game({ setScene, gameMode }) {
         if (newValue.length === currentQa[1].toString().length) {
           if (validateAns(newValue)) {
             setCorrect(true);
+            setNoOfCorrect((prev) => prev + 1);
           } else {
             setCorrect(false);
+            setNoOfWrong((prev) => prev + 1);
           }
           setPrevAnswer(newValue);
           return "";
@@ -84,6 +89,15 @@ export default function Game({ setScene, gameMode }) {
       <h3>{typedAnswer ? typedAnswer : "-"}</h3>
       <p>{prevAnswer}</p>
       <button onClick={goBack}>Go Back</button>
+
+      <div className="hud">
+        <p>
+          Correct: <span className="success-color">{noOfCorrect}</span>
+        </p>
+        <p>
+          Wrong: <span className="danger-color">{noOfWrong}</span>
+        </p>
+      </div>
     </div>
   );
 }
