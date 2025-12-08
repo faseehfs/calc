@@ -13,8 +13,8 @@ export default function Game({ setScene, gameMode }) {
     };
   } else if (gameMode === "addition") {
     generateQAndA = () => {
-      const num1 = Math.floor(Math.random() * 91);
-      const num2 = Math.floor(Math.random() * 10);
+      const num1 = Math.floor(Math.random() * 90 + 1);
+      const num2 = Math.floor(Math.random() * 9 + 1);
       const question = `${num1} + ${num2}`;
       const answer = num1 + num2;
       return [question, answer];
@@ -23,7 +23,7 @@ export default function Game({ setScene, gameMode }) {
 
   const [currentQa, setCurrentQa] = React.useState(generateQAndA());
   const [typedAnswer, setTypedAnswer] = React.useState("");
-  const [prevAnswer, setPrevAnswer] = React.useState("");
+  const [prevAnswer, setPrevAnswer] = React.useState("...");
   const [correct, setCorrect] = React.useState(null);
 
   function updateQa() {
@@ -77,7 +77,9 @@ export default function Game({ setScene, gameMode }) {
         <p className="success-color">Correct!</p>
       ) : correct === false ? (
         <p className="danger-color">Wrong!</p>
-      ) : null}
+      ) : (
+        <p>Type your answer</p>
+      )}
       <h1>{currentQa[0]}</h1>
       <h3>{typedAnswer ? typedAnswer : "-"}</h3>
       <p>{prevAnswer}</p>
